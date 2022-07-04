@@ -20,12 +20,3 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
-
-bootJar{
-	mainClassName = 'com.example.hellojenkins.helloJenkinsApplication'
-}
-
-bootRun{
-	String activeProfile = System.properties['spring.profile.active']
-	systemProperty "spring.profiles.active", activeProfile
-}
