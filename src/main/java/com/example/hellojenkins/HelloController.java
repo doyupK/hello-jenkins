@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @GetMapping
     public String sayHello() {
-        return "hell, 됐다...자동 빌드테스트...23";
+        return "hell, 됐다...자동 빌드테스트...언제 되냐";
     }
 }
