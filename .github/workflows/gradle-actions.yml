@@ -45,6 +45,6 @@ jobs:
     - name: Docker build
       run: |
         docker build -t spring-cicd .
-        docker tag spring-cicd gltlvl12/jenkins-test:${GITGUB_SHA::7}
+        docker tag spring-cicd gltlvl12/spring-cicd:${GITGUB_SHA::7}
         docker push gltlvl12/spring-cicd:${GITGUB_SHA::7}
 
