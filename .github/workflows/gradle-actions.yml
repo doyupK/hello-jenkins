@@ -52,10 +52,10 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
           host: ec2-3-36-71-224.ap-northeast-2.compute.amazonaws.com
-          username: ubuntu
+          username: root
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
-          envs: GITHUB_SHA
+#           envs: GITHUB_SHA
           script: |
             docker pull gltlvl12/spring-cicd:${GITHUB_SHA::7}
             docker tag gltlvl12/spring-cicd:${GITHUB_SHA::7} spring-cicd
