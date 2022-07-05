@@ -51,8 +51,8 @@ jobs:
     - name: Deploy
       uses: appleboy/ssh-action@master
       with:
-          host: 3.36.71.224
-          username: ubuntu
+          host: ec2-3-36-71-224.ap-northeast-2.compute.amazonaws.com
+          username: ec2-user
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           envs: GITHUB_SHA
