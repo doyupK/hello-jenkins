@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @GetMapping
     public String sayHello() {
-        return "1215661511515153737";
+        return "1aaa5153737";
     }
 }
