@@ -48,16 +48,31 @@ jobs:
         docker tag spring-cicd gltlvl12/spring-cicd:${GITHUB_SHA::7}
         docker push gltlvl12/spring-cicd:${GITHUB_SHA::7}
         
-    - name: Deploy
-      uses: appleboy/ssh-action@master
+#     - name: Deploy
+#       uses: appleboy/ssh-action@master
+#       with:
+#           host: 3.36.71.224
+#           username: ubuntu
+#           key: ${{ secrets.PRIVATE_KEY }}
+#           port: 22
+#           envs: GITHUB_SHA
+#           script: |
+#             docker pull gltlvl12/spring-cicd:${GITHUB_SHA::7}
+#             docker tag gltlvl12/spring-cicd:${GITHUB_SHA::7} spring-cicd
+#             docker stop server
+#             docker run -d --rm --name server -p 80:8080 spring-cicd
+            
+            
+    - name: Load private SSH key
+      uses: webfactory/ssh-agent@v0.5.3
       with:
-          host: 3.36.71.224
-          username: ubuntu
-          key: ${{ secrets.PRIVATE_KEY }}
-          port: 22
-          envs: GITHUB_SHA
-          script: |
-            docker pull gltlvl12/spring-cicd:${GITHUB_SHA::7}
-            docker tag gltlvl12/spring-cicd:${GITHUB_SHA::7} spring-cicd
-            docker stop server
-            docker run -d --rm --name server -p 80:8080 spring-cicd
+        ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+
+    - name: Atomic Deploy
+      run: |
+        ssh ubuntu@3.36.71.224 << EOF
+          docker pull gltlvl12/spring-cicd:${GITHUB_SHA::7}
+          docker tag gltlvl12/spring-cicd:${GITHUB_SHA::7} spring-cicd
+          docker stop server
+          docker run -d --rm --name server -p 80:8080 spring-cicd
+        EOF
