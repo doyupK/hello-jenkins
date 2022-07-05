@@ -53,7 +53,7 @@ jobs:
       with:
           host: ec2-3-36-71-224.ap-northeast-2.compute.amazonaws.com
           username: gltlvl12@gmail.com
-          key: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secret.PRIVATE_KEY }}
           port: 22
 #           envs: GITHUB_SHA
           script: |
