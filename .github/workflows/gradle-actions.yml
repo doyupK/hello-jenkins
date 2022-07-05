@@ -13,8 +13,8 @@ on:
   pull_request:
     branches: [ "master" ]
 
-permissions:
-  contents: read
+# permissions:
+#   contents: read
 
 jobs:
   build:
@@ -51,10 +51,10 @@ jobs:
     - name: Deploy
       uses: appleboy/ssh-action@master
       with:
-          host: ec2-3-36-71-224.ap-northeast-2.compute.amazonaws.com
+          host: ${{ secrets.HOST }}
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
-          port: 22
+          port: ${{ secrets.PORT }}
 #           envs: GITHUB_SHA
           script: |
             docker pull gltlvl12/spring-cicd:${GITHUB_SHA::7}
