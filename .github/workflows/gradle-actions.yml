@@ -54,6 +54,7 @@ jobs:
           host: 3.36.71.224
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
           envs: GITHUB_SHA
           script: |
             docker pull gltlvl12/spring-cicd:${GITHUB_SHA::7}
