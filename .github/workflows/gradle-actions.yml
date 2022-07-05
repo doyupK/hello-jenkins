@@ -52,8 +52,8 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
           host: ec2-3-36-71-224.ap-northeast-2.compute.amazonaws.com
-          username: gltlvl12@gmail.com
-          key: ${{ secret.PRIVATE_KEY }}
+          username: ubuntu
+          key: ${{ secrets.PRIVATE_KEY }}
           port: 22
 #           envs: GITHUB_SHA
           script: |
