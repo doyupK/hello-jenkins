@@ -38,7 +38,7 @@ jobs:
         
     - name: Docker build
       run: |
-        docker login -u ${{secrey.USERNAME}} -p ${{ secreys.PASSWORD }}
+        docker login -u ${{secrets.USERNAME}} -p ${{ secrets.PASSWORD }}
         docker build -t spring-cicd .
         docker tag spring-cicd gltlvl12/jenkins-test:${GITGUB_SHA::7}
         docker push gltlvl12/spring-cicd:${GITGUB_SHA::7}
